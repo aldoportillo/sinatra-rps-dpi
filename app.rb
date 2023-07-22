@@ -4,3 +4,54 @@ require "sinatra/reloader"
 get("/") do
   erb(:rules)
 end
+
+
+get("/rock"){
+  @user_selection = "rock"
+  @computer_selection = ['rock','paper','scissors'].at(rand(0..2))
+
+  if @computer_selection == "paper"
+    @result = "We lost!"
+  elsif @computer_selection == "scissors"
+    @result = "We won!"
+  elsif @computer_selection == "rock"
+    @result = "We tied!"
+  else
+    @result = "Invalid entry"
+  end
+
+  erb(:game)
+}
+
+get("/paper"){
+  @user_selection = "paper"
+  @computer_selection = ['rock','paper','scissors'].at(rand(0..2))
+
+  if @computer_selection == "paper"
+    @result = "We tied!"
+  elsif @computer_selection == "scissors"
+    @result = "We lost!"
+  elsif @computer_selection == "rock"
+    @result = "We won!"
+  else
+    @result = "Invalid entry"
+  end
+  erb(:game)
+}
+
+get("/scissors"){
+  @user_selection = "scissors"
+  @computer_selection = ['rock','paper','scissors'].at(rand(0..2))
+
+  if @computer_selection == "paper"
+    @result = "We won!"
+  elsif @computer_selection == "scissors"
+    @result = "We tied!"
+  elsif @computer_selection == "rock"
+    @result = "We lost!"
+  else
+    @result = "Invalid entry"
+  end
+  erb(:game)
+
+}
